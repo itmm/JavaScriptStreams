@@ -1,0 +1,9 @@
+body {
+	background-color: #003;
+	color: #ccb;
+	margin: 30px;
+	line-height: 150%;
+}
+td:first-child {
+	text-align: right;
+}
