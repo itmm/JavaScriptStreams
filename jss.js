@@ -10,8 +10,8 @@ function stream_map(a, b, f) {
 	return stream_cons(f(stream_car(a), stream_car(b)), function () {
 		return stream_map(stream_cdr(a), stream_cdr(b), f);
 	});
-	
 }
+
 function stream_add(a, b) { return stream_map(a, b, function(a, b) { return a + b; }); }
 
 function stream_filter(s, p) {

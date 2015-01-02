@@ -1,4 +1,4 @@
-function ones() { return stream_cons(1, ones) }
+function ones() { return stream_cons(1, ones); }
 
 function integers(from) {
 	return stream_cons(from, function() {
@@ -8,8 +8,11 @@ function integers(from) {
 
 function filter_primes(s) {
 	var num = stream_car(s);
-	return stream_cons(num, function() {
-		return filter_primes(stream_filter(s, function(v) { return v % num; }));
+	return stream_cons(num,
+		function() {
+			return filter_primes(
+				stream_filter(s, function(v) { return v % num; })
+			);
 	});
 }
 
@@ -24,7 +27,7 @@ function cell(content) {
 
 for (var i = 1; i <= 20; ++i) {
 	var row = document.createElement("tr");
-	row.appendChild(cell("pi(" + i + ")"));
+	row.appendChild(cell("π(" + i + ")"));
 	row.appendChild(cell("=="));
 	row.appendChild(cell("" + stream_car(primes)));
 	result.appendChild(row);
