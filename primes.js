@@ -1,8 +1,8 @@
-function make_ones() { return stream_cons(1, make_ones) }
+function ones() { return stream_cons(1, ones) }
 
-function make_integers(from) {
+function integers(from) {
 	return stream_cons(from, function() {
-		return stream_add(make_ones(), make_integers(from));
+		return stream_add(ones(), integers(from));
 	});
 }
 
@@ -13,7 +13,7 @@ function filter_primes(s) {
 	});
 }
 
-var primes = filter_primes(make_integers(2));
+var primes = filter_primes(integers(2));
 var result = document.getElementById("result");
 
 function cell(content) {
